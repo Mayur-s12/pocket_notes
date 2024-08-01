@@ -3,8 +3,11 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
+import groupRoutes from "./routes/groups.js";
 
 dotenv.config();
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(bodyParser.json());
@@ -24,5 +27,15 @@ mongoose
   .catch((error) => {
     console.error("Error connecting to MongoDB Atlas", error);
   });
+
+app.use("/api", groupRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Hello Server!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 export default app;
