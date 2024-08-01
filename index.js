@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
 import groupRoutes from "./routes/groups.js";
+import notesRoute from "./routes/notes.js";
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ mongoose
   });
 
 app.use("/api", groupRoutes);
+app.use("/api", notesRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello Server!");

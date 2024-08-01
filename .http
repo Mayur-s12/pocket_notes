@@ -1,0 +1,7 @@
+POST http://localhost:3000/api/notes
+Content-Type: application/json
+
+{
+  "content": "This is a note for the Work group.",
+  "groupId":  "66ab49effb3f2180d3b574f2"
+}
