@@ -21,7 +21,7 @@ router.post("/groups", async (req, res) => {
 // Get all groups
 router.get("/groups", async (req, res) => {
   try {
-    const groups = await Group.find();
+    const groups = await Group.find().sort({ createdAt: -1 });
     res.status(200).send(groups);
   } catch (error) {
     res.status(500).send({ error: "Error fetching groups" });

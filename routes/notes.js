@@ -28,7 +28,7 @@ router.post("/notes", async (req, res) => {
 router.get("/notes/:groupId", async (req, res) => {
   const { groupId } = req.params;
   try {
-    const notes = await Note.find({ groupId });
+    const notes = await Note.find({ groupId }).sort({ createdAt: -1 });
     res.status(200).send(notes);
   } catch (error) {
     res.status(500).send({ error: "Error fetching notes" });
